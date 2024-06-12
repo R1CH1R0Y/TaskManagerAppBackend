@@ -18,6 +18,15 @@ app.post("/add",(req,res)=>{
     res.json({status:"success"})
 })
 
+app.post("/search",(req,res)=>{
+    let input=req.body
+    taskmodel.find(input).then(
+        (data)=>{
+            res.json(data)
+        }
+    ).catch()
+})
+
 app.post("/view",(req,res)=>{
     taskmodel.find().then(
         (data)=>{
