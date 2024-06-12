@@ -27,6 +27,19 @@ app.post("/search",(req,res)=>{
     ).catch()
 })
 
+app.post("/remove",(req,res)=>{
+    let input=req.body
+    taskmodel.findByIdAndDelete(input._id).then(
+        (response)=>{
+            res.json({status:"success"})
+        }
+    ).catch(
+        (error)=>{
+            res.json({status:"error"})
+        }
+    )
+})
+
 app.post("/view",(req,res)=>{
     taskmodel.find().then(
         (data)=>{
