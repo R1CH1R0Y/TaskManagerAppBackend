@@ -18,6 +18,18 @@ app.post("/add",(req,res)=>{
     res.json({status:"success"})
 })
 
+app.post("/view",(req,res)=>{
+    taskmodel.find().then(
+        (data)=>{
+            res.json(data)
+        }
+    ).catch(
+        (error)=>{
+            alert(error.message)
+        }
+    )
+})
+
 app.listen(8235,()=>{
     console.log("server started")
 })
